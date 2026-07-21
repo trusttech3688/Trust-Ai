@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trust AI</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body class="dark">
+
+<div class="app" id="app">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-text">Trust AI</div>
+      <div class="logo-sub">Your intelligent workspace</div>
+    </div>
+    <div class="nav">
+      <div class="nav-section">
+        <div class="nav-label">Workspace</div>
+        <div class="nav-item active" onclick="switchMode('chat')"><i class="ti ti-message-2"></i> Chat</div>
+        <div class="nav-item" onclick="switchMode('coding')"><i class="ti ti-code"></i> Coding</div>
+        <div class="nav-item" onclick="switchMode('research')"><i class="ti ti-search"></i> Research</div>
+        <div class="nav-item" onclick="switchMode('design')"><i class="ti ti-palette"></i> Design</div>
+        <div class="nav-item" onclick="switchMode('math')"><i class="ti ti-math"></i> Math & Science</div>
+        <div class="nav-item" onclick="switchMode('image')"><i class="ti ti-photo"></i> Image Gen</div>
+        <div class="nav-item" onclick="switchMode('voice')"><i class="ti ti-microphone"></i> Voice</div>
+        <div class="nav-item" onclick="switchMode('academic')"><i class="ti ti-school"></i> Academic</div>
+        <div class="nav-item" onclick="switchMode('translate')"><i class="ti ti-world"></i> Translate</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Projects</div>
+        <div class="nav-item" onclick="switchMode('projects')"><i class="ti ti-folder"></i> My Projects</div>
+        <div class="nav-item" onclick="switchMode('documents')"><i class="ti ti-file-text"></i> Documents</div>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">TA</div>
+        <div>
+          <div class="user-name">Trust AI User</div>
+          <div class="user-role">All Features Active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="page-title" id="pageTitle">Chat</div>
+        <div class="page-badge">25 APIs active</div>
+      </div>
+      <div class="topbar-right">
+        <div class="mode-tabs">
+          <div class="mode-tab active" onclick="setTab(this,'general')">General</div>
+          <div class="mode-tab" onclick="setTab(this,'coder')">Coder</div>
+          <div class="mode-tab" onclick="setTab(this,'research')">Research</div>
+        </div>
+        <button class="toggle-btn" onclick="toggleTheme()">
+          <i class="ti ti-moon" id="themeIcon"></i>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="chat-area">
+        <div class="messages" id="messages">
+          <div class="msg">
+            <div class="msg-avatar ai-av">TA</div>
+            <div class="msg-bubble ai-bubble">
+              Hello! I'm <strong>Trust AI</strong> — your all-in-one intelligent assistant. I can help you code, research, design, solve math, generate images, translate and much more. What would you like to do today?
+            </div>
+          </div>
+        </div>
+
+        <div class="input-area">
+          <div class="input-toolbar">
+            <button class="tool-btn" onclick="switchMode('coding')"><i class="ti ti-code"></i> Code</button>
+            <button class="tool-btn" onclick="switchMode('image')"><i class="ti ti-photo"></i> Image</button>
+            <button class="tool-btn" onclick="switchMode('research')"><i class="ti ti-search"></i> Research</button>
+            <button class="tool-btn" onclick="startVoice()"><i class="ti ti-microphone"></i> Voice</button>
+            <button class="tool-btn" onclick="document.getElementById('fileInput').click()"><i class="ti ti-file-upload"></i> Upload</button>
+            <button class="tool-btn" onclick="switchMode('math')"><i class="ti ti-calculator"></i> Math</button>
+          </div>
+          <input type="file" id="fileInput" style="display:none" onchange="handleFileUpload(event)"/>
+          <div class="input-box">
+            <textarea class="input-field" id="inputField" placeholder="Ask Trust AI anything..." rows="1" onkeydown="handleKey(event)"></textarea>
+            <button class="send-btn" onclick="sendMessage()"><i class="ti ti-send"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="panel-header">
+          Capabilities
+          <i class="ti ti-layout-grid"></i>
+        </div>
+        <div class="capability-cards">
+          <div class="cap-card active" onclick="switchMode('coding')">
+            <div class="cap-title"><i class="ti ti-code"></i> Coding</div>
+            <div class="cap-desc">Write, debug & preview code</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('research')">
+            <div class="cap-title"><i class="ti ti-search"></i> Deep Research</div>
+            <div class="cap-desc">Real-time web research</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('image')">
+            <div class="cap-title"><i class="ti ti-photo"></i> Image & Design</div>
+            <div class="cap-desc">Generate images & logos</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('math')">
+            <div class="cap-title"><i class="ti ti-math"></i> Math & Science</div>
+            <div class="cap-desc">Solve complex equations</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('translate')">
+            <div class="cap-title"><i class="ti ti-world"></i> Translation</div>
+            <div class="cap-desc">100+ languages supported</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('voice')">
+            <div class="cap-title"><i class="ti ti-microphone"></i> Voice</div>
+            <div class="cap-desc">Speak & hear responses</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('documents')">
+            <div class="cap-title"><i class="ti ti-file-text"></i> Documents</div>
+            <div class="cap-desc">Read & analyze PDFs</div>
+          </div>
+          <div class="cap-card" onclick="switchMode('academic')">
+            <div class="cap-title"><i class="ti ti-school"></i> Academic</div>
+            <div class="cap-desc">Art & science problems</div>
+          </div>
+        </div>
+        <div class="status-bar">
+          <div class="status-dot"></div>
+          <div class="status-text">All systems online</div>
+          <div class="api-count">25 APIs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
