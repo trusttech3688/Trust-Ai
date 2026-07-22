@@ -6,14 +6,14 @@ module.exports = {
     baseURL: 'https://api.groq.com/openai/v1',
     model: 'llama-3.3-70b-versatile'
   },
-openrouter: {
+  openrouter: {
     apiKey: process.env.OPENROUTER_API_KEY,
     baseURL: 'https://openrouter.ai/api/v1',
     model: 'tencent/hy3:free',
     codingModel: 'cohere/north-mini-code:free',
     researchModel: 'moonshotai/kimi-k3',
     backupModel: 'poolside/laguna-xs-2.1:free'
-  
+  },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,
     baseURL: 'https://generativelanguage.googleapis.com/v1beta'
