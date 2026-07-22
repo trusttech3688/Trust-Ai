@@ -115,67 +115,178 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-/* MOBILE RESPONSIVE */
+
+/* MOBILE RESPONSIVE - ChatGPT Style */
 @media (max-width: 768px) {
-  .app { flex-direction: column; }
   
-  .sidebar { 
-    width: 100%; 
-    height: auto; 
-    border-right: none;
-    border-bottom: 0.5px solid var(--border);
+  .app { 
+    flex-direction: column; 
+    height: 100vh;
+    height: 100dvh;
   }
   
-  .nav { 
-    display: flex; 
-    flex-direction: row; 
-    overflow-x: auto; 
-    padding: 8px;
-    gap: 4px;
-  }
+  /* HIDE SIDEBAR - replaced by bottom nav */
+  .sidebar { display: none; }
   
-  .nav-section { 
-    display: flex; 
-    flex-direction: row; 
-    margin-bottom: 0;
-    gap: 4px;
-  }
-  
-  .nav-label { display: none; }
-  
-  .nav-item { 
-    white-space: nowrap; 
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-  
+  /* HIDE RIGHT PANEL */
   .right-panel { display: none; }
   
-  .main { flex: 1; }
+  /* MAIN TAKES FULL SCREEN */
+  .main { 
+    flex: 1; 
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
   
+  /* TOP BAR - clean minimal */
+  .topbar { 
+    padding: 12px 16px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .page-title { 
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .page-badge { display: none; }
+  
+  .mode-tabs { display: none; }
+  
+  /* MESSAGES AREA */
+  .messages { 
+    flex: 1;
+    padding: 16px;
+    padding-bottom: 180px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* MESSAGE BUBBLES */
+  .msg-bubble { 
+    max-width: 85%;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 12px 16px;
+  }
+  
+  .msg-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  /* INPUT AREA - fixed at bottom like ChatGPT */
   .input-area { 
     position: fixed; 
     bottom: 0; 
     left: 0; 
     right: 0; 
     background: var(--bg);
+    padding: 12px 16px 24px;
+    border-top: 0.5px solid var(--border);
     z-index: 100;
-    padding: 10px;
   }
   
-  .messages { 
-    padding-bottom: 120px; 
+  /* TOOL BUTTONS - scrollable row */
+  .input-toolbar {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    margin-bottom: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
   
-  .topbar { 
-    padding: 8px 12px; 
+  .input-toolbar::-webkit-scrollbar { display: none; }
+  
+  .tool-btn {
+    white-space: nowrap;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 20px;
+    flex-shrink: 0;
   }
   
-  .mode-tabs { display: none; }
+  /* INPUT BOX - ChatGPT style */
+  .input-box {
+    border-radius: 24px;
+    padding: 12px 16px;
+    min-height: 50px;
+    align-items: center;
+  }
   
-  .sidebar-footer { display: none; }
+  .input-field {
+    font-size: 15px;
+  }
   
-  .logo { padding: 12px 16px 8px; }
+  .send-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+
+  /* BOTTOM NAVIGATION BAR */
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--sidebar);
+    border-top: 0.5px solid var(--border);
+    padding: 8px 0 20px;
+    z-index: 200;
+    justify-content: space-around;
+    align-items: center;
+  }
   
-  .logo-text { font-size: 16px; }
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 8px;
+    color: var(--text3);
+    font-size: 10px;
+    transition: all 0.15s;
+  }
+  
+  .mobile-nav-item.active {
+    color: var(--accent-text);
+  }
+  
+  .mobile-nav-item i {
+    font-size: 22px;
+  }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .chat-area {
+    height: 100%;
+  }
 }
+
+/* Hide mobile nav on desktop */
+.mobile-nav { display: none; }

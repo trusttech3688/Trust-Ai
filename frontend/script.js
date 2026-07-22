@@ -214,3 +214,8 @@ async function handleFileUpload(event) {
     addMessage('Document upload failed. Check your server.');
   }
 }
+// MOBILE NAV
+function setMobileNav(el) {
+  document.querySelectorAll('.mobile-nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
