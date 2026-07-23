@@ -11,7 +11,7 @@
 
 <div class="app" id="app">
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR (desktop only) -->
   <div class="sidebar">
     <div class="logo">
       <div class="logo-text">Trust AI</div>
@@ -49,8 +49,13 @@
 
   <!-- MAIN -->
   <div class="main">
+
+    <!-- TOP BAR -->
     <div class="topbar">
       <div class="topbar-left">
+        <div class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+          <i class="ti ti-menu-2"></i>
+        </div>
         <div class="page-title" id="pageTitle">Chat</div>
         <div class="page-badge">25 APIs active</div>
       </div>
@@ -64,6 +69,30 @@
           <i class="ti ti-moon" id="themeIcon"></i>
           <span id="themeLabel">Dark</span>
         </button>
+      </div>
+    </div>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- MOBILE SIDEBAR -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+      <div class="mobile-sidebar-header">
+        <div class="logo-text">Trust AI</div>
+        <button onclick="toggleMobileSidebar()" class="close-btn"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="mobile-sidebar-nav">
+        <div class="nav-item active" onclick="switchMode('chat'); toggleMobileSidebar()"><i class="ti ti-message-2"></i> Chat</div>
+        <div class="nav-item" onclick="switchMode('coding'); toggleMobileSidebar()"><i class="ti ti-code"></i> Coding</div>
+        <div class="nav-item" onclick="switchMode('research'); toggleMobileSidebar()"><i class="ti ti-search"></i> Research</div>
+        <div class="nav-item" onclick="switchMode('design'); toggleMobileSidebar()"><i class="ti ti-palette"></i> Design</div>
+        <div class="nav-item" onclick="switchMode('math'); toggleMobileSidebar()"><i class="ti ti-math"></i> Math & Science</div>
+        <div class="nav-item" onclick="switchMode('image'); toggleMobileSidebar()"><i class="ti ti-photo"></i> Image Gen</div>
+        <div class="nav-item" onclick="switchMode('voice'); toggleMobileSidebar()"><i class="ti ti-microphone"></i> Voice</div>
+        <div class="nav-item" onclick="switchMode('academic'); toggleMobileSidebar()"><i class="ti ti-school"></i> Academic</div>
+        <div class="nav-item" onclick="switchMode('translate'); toggleMobileSidebar()"><i class="ti ti-world"></i> Translate</div>
+        <div class="nav-item" onclick="switchMode('projects'); toggleMobileSidebar()"><i class="ti ti-folder"></i> My Projects</div>
+        <div class="nav-item" onclick="switchMode('documents'); toggleMobileSidebar()"><i class="ti ti-file-text"></i> Documents</div>
       </div>
     </div>
 
@@ -95,6 +124,7 @@
         </div>
       </div>
 
+      <!-- RIGHT PANEL (desktop only) -->
       <div class="right-panel">
         <div class="panel-header">
           Capabilities
@@ -141,33 +171,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- MOBILE BOTTOM NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-item active" onclick="switchMode('chat'); setMobileNav(this)">
-    <i class="ti ti-message-2"></i>
-    <span>Chat</span>
-  </div>
-  <div class="mobile-nav-item" onclick="switchMode('coding'); setMobileNav(this)">
-    <i class="ti ti-code"></i>
-    <span>Code</span>
-  </div>
-  <div class="mobile-nav-item" onclick="switchMode('research'); setMobileNav(this)">
-    <i class="ti ti-search"></i>
-    <span>Research</span>
-  </div>
-  <div class="mobile-nav-item" onclick="switchMode('image'); setMobileNav(this)">
-    <i class="ti ti-photo"></i>
-    <span>Image</span>
-  </div>
-  <div class="mobile-nav-item" onclick="switchMode('design'); setMobileNav(this)">
-    <i class="ti ti-palette"></i>
-    <span>Design</span>
-  </div>
-  <div class="mobile-nav-item" onclick="switchMode('math'); setMobileNav(this)">
-    <i class="ti ti-math"></i>
-    <span>Math</span>
   </div>
 </div>
 

@@ -2,6 +2,14 @@ let currentMode = 'chat';
 let isDark = true;
 const userId = 'user_' + Math.random().toString(36).substr(2, 9);
 
+// MOBILE SIDEBAR TOGGLE
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('mobileSidebar');
+  const overlay = document.getElementById('mobileSidebarOverlay');
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('active');
+}
+
 // THEME TOGGLE
 function toggleTheme() {
   isDark = !isDark;
